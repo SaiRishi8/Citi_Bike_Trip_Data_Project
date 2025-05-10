@@ -1,10 +1,6 @@
 name: citibike_tripdata_inference_pipeline
 
 on:
-  workflow_run:
-    workflows: ["citibike_tripdata_features_pipeline"]
-    types:
-      - completed
   workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs:
