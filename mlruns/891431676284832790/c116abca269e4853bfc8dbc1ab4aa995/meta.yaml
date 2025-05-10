@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/DELL/Citi%20Bike%20Project/mlruns/891431676284832790/c116abca269e4853bfc8dbc1ab4aa995/artifacts
+end_time: 1746819435498
+entry_point_name: ''
+experiment_id: '891431676284832790'
+lifecycle_stage: active
+run_id: c116abca269e4853bfc8dbc1ab4aa995
+run_name: LightGBM_All28Lags
+run_uuid: c116abca269e4853bfc8dbc1ab4aa995
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1746819417534
+status: 3
+tags: []
+user_id: DELL
