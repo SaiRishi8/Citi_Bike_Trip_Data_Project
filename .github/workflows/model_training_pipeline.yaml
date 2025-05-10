@@ -1,8 +1,6 @@
 name: citibike_tripdata_model_training_pipeline
 
 on:
-  schedule:
-    - cron: '0 0 * * 1' # Runs every monday
   workflow_dispatch: # Allows manual triggering of the workflow
 
 jobs:
