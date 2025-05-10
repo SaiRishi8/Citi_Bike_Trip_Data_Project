@@ -37,6 +37,7 @@ print(f"MAE: {mae:.2f}")
 # Step 6: Log to MLflow
 mlflow.set_tracking_uri("https://dagshub.com/SaiRishi9/Citi_Bike_tripdata.mlflow")
 mlflow.set_experiment("CitiBike_Demand_Prediction")
+mlflow.login(os.environ["MLFLOW_TRACKING_USERNAME"], os.environ["MLFLOW_TRACKING_PASSWORD"])
 
 with mlflow.start_run(run_name="LightGBM_All28Lags"):
     mlflow.log_metric("mae", mae)
