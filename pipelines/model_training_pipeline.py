@@ -4,6 +4,7 @@ import mlflow
 import lightgbm as lgb
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error
+import os
 
 # Step 1: Login and load feature group
 project = hopsworks.login(
@@ -35,12 +36,19 @@ mae = mean_absolute_error(y_test, y_pred)
 print(f"MAE: {mae:.2f}")
 
 # Step 6: Log to MLflow
-mlflow.set_tracking_uri("https://dagshub.com/SaiRishi9/Citi_Bike_tripdata.mlflow")
+os.environ["MLFLOW_TRACKING_URI"] = "https://dagshub.com/SaiRishi9/Citi_Bike_tripdata.mlflow"
+os.environ["MLFLOW_TRACKING_USERNAME"] = "SaiRishi9"
+os.environ["MLFLOW_TRACKING_PASSWORD"] = "04d7d6dc6aecf6ef6daebf98528e9e3ef8afaae7"
+
+# Set experiment
 mlflow.set_experiment("CitiBike_Demand_Prediction")
-mlflow.login(os.environ["MLFLOW_TRACKING_USERNAME"], os.environ["MLFLOW_TRACKING_PASSWORD"])
 
 with mlflow.start_run(run_name="LightGBM_All28Lags"):
     mlflow.log_metric("mae", mae)
-    mlflow.lightgbm.log_model(model, artifact_path="model", registered_model_name="citibike_demand_model")
+    mlflow.lightgbm.log_model(
+        model,
+        artifact_path="model",
+        registered_model_name="citibike_demand_model"
+    )
     mlflow.set_tag("model_type", "LightGBM")
     mlflow.set_tag("feature_set", "All 28 lag features")
