@@ -1,9 +1,12 @@
 # src/feature_pipeline.py
 import pandas as pd
 import hopsworks
+import os
 
 # Step 1: Load raw Citi Bike trip data
-csv_path = r"cleaned_citibike_top3_2023.csv"
+csv_path = os.path.join(os.path.dirname(__file__), "..", "cleaned_citibike_top3_2023.csv")
+csv_path = os.path.abspath(csv_path)
+
 df = pd.read_csv(csv_path, low_memory=False)
 
 # Step 2: Convert started_at to datetime and aggregate to hourly ride counts
